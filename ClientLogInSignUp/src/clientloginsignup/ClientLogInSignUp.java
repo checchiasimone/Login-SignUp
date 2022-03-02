@@ -38,7 +38,7 @@ public class ClientLogInSignUp {
                 user = sc.next();
                 System.out.println("inserire password");
                 password = sc.next();
-                Socket clientSocket = new Socket("10.1.33.14", 5001);
+                Socket clientSocket = new Socket("10.1.33.14", 5000);
                 PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
                 BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
                 out.println(choice);

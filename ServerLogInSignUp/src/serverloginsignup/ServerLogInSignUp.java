@@ -21,13 +21,13 @@ public class ServerLogInSignUp {
     private static Socket clientSocket;
     private static PrintWriter out;
     private static BufferedReader in;
-    private static int port = 5001;
+    private static final int port = 5000;
 
     public static void main(String[] args) {
         try {
             ServerSocket serverSocket = new ServerSocket(port);
             File credenziali = new File("credenziali.txt");
-            FileWriter c = new FileWriter(credenziali, true);
+            FileWriter c = new FileWriter(credenziali);
             Scanner cred = new Scanner(credenziali);
             do {
                 do {
