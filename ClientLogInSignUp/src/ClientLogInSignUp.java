@@ -27,7 +27,7 @@ public class ClientLogInSignUp {
                         + "\n [reg/log]");
                 String choice = sc.next(), user = null, password = null;
                 try {
-                    if (!choice.equals("reg") &&! choice.equals("log")) {
+                    if (!choice.equals("reg") && !choice.equals("log")) {
                         throw new Exception("error");
                     }
                 } catch (Exception e) {
@@ -38,7 +38,7 @@ public class ClientLogInSignUp {
                 user = sc.next();
                 System.out.println("inserire password");
                 password = sc.next();
-                Socket clientSocket = new Socket("10.1.33.14", 5000);
+                Socket clientSocket = new Socket("localhost", 5000);
                 PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
                 BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
                 out.println(choice);
@@ -47,24 +47,21 @@ public class ClientLogInSignUp {
                 if (in.readLine().equals("OK")) {
                     if (choice.equals("log")) {
                         System.out.println("login effettuato");
+                        
                         break;
                     } else {
                         System.out.println("registrazione effettuata");
                     }
 
-                } else if (in.readLine().equals("NO")) {
+                } else {
                     if (choice.equals("log")) {
                         System.out.println("login fallito");
                     } else {
                         System.out.println("registrazione fallita");
                     }
                 }
-//                in.close();
-//                out.close();
-//                clientSocket.close();
-
             } catch (IOException ex) {
-
+                System.err.println("err");
             }
         } while (true);
     }
